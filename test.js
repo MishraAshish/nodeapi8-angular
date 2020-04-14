@@ -1,9 +1,27 @@
-// module
+//arrow function/ fat arrow function - most important
 
-var user = require("./moduleTest");
+//2. resolves context for the function, how?
+var user = {
+    id: 42,
+    printId: function () {
+        //this - user
+        console.log(this);
+        let that = this;
+        setTimeout(function() { //global
+            console.log("InSide SetTimeOut ",this);
+            console.log(this.id);
+            console.log(that.id);//using that as outer context
+        }.bind(this), 1000); //using bind to set context back to user from global
 
-console.log("User From Module :- ", user);
+        //arrow function
+        setTimeout(() => {
+            console.log(this.id);
+        }, 2000);
+    }
+};
 
-console.log("User Name :- ", user.name);
+user.printId();
 
-console.log("User Name :- ", user.name2);
+//printId.call(user);
+//printId.apply(user,...arg);
+//printId.bind(user,...arg); - delay

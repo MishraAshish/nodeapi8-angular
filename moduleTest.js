@@ -1,3 +1,20 @@
+class User{
+    constructor(firstName, lastName, age, city){
+        this.FirstName = firstName,
+        this.LastName = lastName,
+        this.Age = age,
+        this.City = city
+    }
+  
+    getDetails(){
+        return this.FirstName;
+    }
+  }
+  
+  let classObj = new User("Anu");
+  console.log(classObj.getDetails())
+
+
 var user = {
     name:"Richard",
     age: 25,
