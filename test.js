@@ -1,27 +1,26 @@
-//arrow function/ fat arrow function - most important
+//class in es2015, es6 - syntactic sugar
 
-//2. resolves context for the function, how?
-var user = {
-    id: 42,
-    printId: function () {
-        //this - user
-        console.log(this);
-        let that = this;
-        setTimeout(function() { //global
-            console.log("InSide SetTimeOut ",this);
-            console.log(this.id);
-            console.log(that.id);//using that as outer context
-        }.bind(this), 1000); //using bind to set context back to user from global
+class User{
 
-        //arrow function
-        setTimeout(() => {
-            console.log(this.id);
-        }, 2000);
+    constructor(firstName, lastName, age, city)
+    {
+        this.FirstName = firstName,
+        this.LastName = lastName,
+        this.Age = age,
+        this.City = city
     }
-};
+  
+    getDetails(){
+        //return this.FirstName;
+        return this.Age;
+    }
 
-user.printId();
+    getCity(){
+        return this.City;
+    }
+  }
+  
+  let classObj = new User("Linh","asd",21, "New York");
 
-//printId.call(user);
-//printId.apply(user,...arg);
-//printId.bind(user,...arg); - delay
+  console.log(classObj.getDetails())
+  console.log(classObj.getCity())
