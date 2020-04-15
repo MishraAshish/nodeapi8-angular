@@ -1,3 +1,23 @@
+
+let promise1 = new Promise(function(resolve, reject)
+{  
+   //  setTimeout(function() {   //async callback 
+   //      //resolve('Resolved Promise');  
+   //      reject({
+   //         "status":400,
+   //         "Error":"Path Not Found"
+   //      });
+   //     }, 300);
+
+   setTimeout(function() {   //async callback               
+       resolve({
+           "status":200,
+           "success":"We are resolved"
+       });
+   }, 400);
+});
+
+
 class User{
     constructor(firstName, lastName, age, city){
         this.FirstName = firstName,
