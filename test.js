@@ -1,6 +1,7 @@
 // async and sync file read operation
 
 let fsObj = require("fs");
+//let event = require("event"); //custom events and use
 
 console.log("moduleTest.js File is about to read");
 
@@ -13,4 +14,4 @@ fsObj.readFile("moduleTest.js","UTF8",(err, data)=>{
     console.log("Data : ", data);
 })
 
-console.log("moduleTest.js File is completed");
+console.log("moduleTest.js File is completed"); //ctrl+c
