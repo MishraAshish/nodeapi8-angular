@@ -1,8 +1,16 @@
-//Javascript Hacks
-//Some manipulations on below code 
+// async and sync file read operation
 
-let a = 1;
+let fsObj = require("fs");
 
-if(a==1 && a==2 && a==3){
-    console.log("hello world")
-}
+console.log("moduleTest.js File is about to read");
+
+//let data = fsObj.readFileSync("moduleTest.js","UTF8"); //blocking execution //synchronous
+//console.log(data);
+
+//asynchronous way of execution
+fsObj.readFile("moduleTest.js","UTF8",(err, data)=>{
+    console.log("Error :", err);
+    console.log("Data : ", data);
+})
+
+console.log("moduleTest.js File is completed");
