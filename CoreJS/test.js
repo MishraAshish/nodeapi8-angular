@@ -1,5 +1,9 @@
 // async and sync file read operation
 
+console.log( __filename );
+console.log( __dirname );
+
+
 let fsObj = require("fs");
 //let event = require("event"); //custom events and use
 
