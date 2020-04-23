@@ -3,6 +3,11 @@
 let express = require('express'), //express reference
 app = express(); //express application created (instantiated)
 
+app.get('/article/:id', function(req , res){ //dynamic api's
+    console.log(req.params);
+    res.send('article' + req.params.id);  
+})
+
 app.get('/', (req, res) =>
 { 
     res.send('Hello World'); 
