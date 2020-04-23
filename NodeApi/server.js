@@ -4,8 +4,14 @@ let express = require("express"),
 app = express(); //invoking express module to get express application intialized
 
 app.get('/helloworld', (req, res)=>{
-    res.send('Hello World'); 
+    console.log(req.query);
+    res.send({msg:'Hello World',queryString :req.query}); 
 });
+
+app.get('/article/:id', function(req , res){ //dynamic api's
+    console.log(req.params);
+    res.send('article' + req.params.id);  
+})
 
 app.get('/html', (req, res)=>{
     res.send(`<h1>This is new place to learn express</h1>
