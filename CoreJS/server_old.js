@@ -1,50 +1,57 @@
-//console.log("server.js loaded, further we need express to handle api request's");
+//creating api structure using express
 
-let express = require('express'), //express reference
-app = express(); //express application created (instantiated)
+let express = require("express"),
+//app = express, //just an assignment of express module nothing else
+app = express(), //invoking express module to get express application intialized
+admin = express(); //mountpath : for submodules to be served separately
+
+app.locals.port = 9000;
+
+app.get('/helloworld', (req, res)=>{
+    console.log(req.query);
+    res.send({msg:'Hello World',queryString :req.query}); 
+});
 
 app.get('/article/:id', function(req , res){ //dynamic api's
     console.log(req.params);
     res.send('article' + req.params.id);  
 })
 
-app.get('/', (req, res) =>
-{ 
+app.get('/html', (req, res)=>{
+    res.send(`<h1>This is new place to learn express</h1>
+    <h2>Printing new H2 tag to test nodemon</h2>`); 
+});
+
+app.get('/json', (req, res)=>{
+    res.json({
+        name:"Richard",
+        city:"Texas"
+    }); 
+});
+
+app.post('/helloworld2', (req, res)=>{
     res.send('Hello World'); 
 });
 
-app.all('/sayhello', (req, res) =>
-{ 
-    console.log("============================================================");
-    console.log("Respones Object", res);
-    console.log("name :", req.query.name);
-    res.send(`<h4>Hello </h4><b>${req.query ? req.query.name : "No Name"}!</b>`)
+app.use("/admin",admin);
+
+app.get('/', (req, res)=>{
+    res.send('Hello World Default'); 
 });
 
-// app.get('/sayhello', (req, res) =>
-// { 
-//     console.log("name :", req.query.name);
-//     res.send(`<h4>Hello </h4><b>${req.query ? req.query.name : "No Name"}!</b>`)
-// });
-
-
-app.get('/mernstack6', (req, res) =>
-{ 
-    res.json({
-        "status":200,
-        "Message": "Mernstack started successfully"
-    }) 
+app.get('*', (req, res)=>{
+    res.locals.params = req.params;
+    res.send("File Path"); 
 });
 
-app.get('*', (req, res) =>
-{ 
-    res.send("<h1>This is default URI</h1>");
+admin.get("/hello", (req, res)=>{
+    res.send('Hello World From Admin'); 
 });
 
-let server = app.listen(8081, () =>
-{ 
-    let host = server.address().address,
-    port = server.address().port
-
-    console.log("Example app listening at http://%s:%s", host, port) 
+admin.get("/goodbye", (req, res)=>{
+    res.send('Good Bye From Admin'); 
 });
+
+app.listen(app.locals.port,"localhost",()=>{
+    console.log("We are listening at port : 9000");
+})

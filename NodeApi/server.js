@@ -1,7 +1,11 @@
 //creating api structure using express
 
 let express = require("express"),
-app = express(); //invoking express module to get express application intialized
+//app = express, //just an assignment of express module nothing else
+app = express(), //invoking express module to get express application intialized
+admin = express();
+
+app.locals.port = 9000;
 
 app.get('/helloworld', (req, res)=>{
     console.log(req.query);
@@ -29,14 +33,25 @@ app.post('/helloworld2', (req, res)=>{
     res.send('Hello World'); 
 });
 
+app.use("/admin",admin);
+
 app.get('/', (req, res)=>{
     res.send('Hello World Default'); 
 });
 
 app.get('*', (req, res)=>{
+    res.locals.params = req.params;
     res.send("File Path"); 
 });
 
-app.listen(9000,"localhost",()=>{
+admin.get("/hello", (req, res)=>{
+    res.send('Hello World From Admin'); 
+});
+
+admin.get("/goodbye", (req, res)=>{
+    res.send('Good Bye From Admin'); 
+});
+
+app.listen(app.locals.port,"localhost",()=>{
     console.log("We are listening at port : 9000");
 })
