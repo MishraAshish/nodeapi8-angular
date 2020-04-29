@@ -1,5 +1,33 @@
 let express = require("express"),
-routes = express.Router({caseSensitive:true});
+routes = express.Router({caseSensitive:true}),
+testModel = require("./DataModel/TestModel");
+
+routes.get('/testuser',(req, res)=>{
+    let qs = req.query;
+    
+    //use the model to save data to mongodb
+    let userObj = new testModel({
+        name:req.query.name,
+        email:req.query.email,
+        age:req.query.age
+    })
+
+    console.log(userObj);
+
+    userObj.save((err, data)=>{
+        console.log("err - ", err);
+        console.log("data - ", data);
+        if (err != null) {
+            res.send("Unable to save data! "+ err);
+        } else {
+            testModel.find((err, dataAll)=>{
+                res.send(dataAll);
+            })   
+        }
+    })
+
+    //res.json(qs); 
+});
 
 routes.get('/helloworld', (req, res)=>{
     res.send({msg:'Hello World',queryString :req.query}); 
