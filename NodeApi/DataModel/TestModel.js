@@ -8,6 +8,9 @@ let testUserSchema = new schemaObj({
     name: String,
     email: {type:String, required:true},
     age: Number
+},
+{
+    versionKey: true//false // set to false then it wont create in mongodb
 });
 
 let testModel = mongooseObj.model("testmodel",testUserSchema);
