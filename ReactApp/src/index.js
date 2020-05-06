@@ -1,11 +1,11 @@
 import React from "react";
 import {render} from "react-dom";
+import App from "./App/app";
+//import {GetName as GetName2} from "./App/app2"; //aliasing for same name import
 
 console.log("index file of synergisticit project");
 
 render(
-     <div>
-         <b>This should load from react page</b>
-    </div>,
+    <App/>,
     document.getElementById("root")
 );
