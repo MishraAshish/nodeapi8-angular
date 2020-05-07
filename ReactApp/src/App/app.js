@@ -15,8 +15,8 @@ export default class App extends React.Component{
                 <div>
                     <b>{title}</b>
                     <ul>{
-                        names.filter((item)=>{
-                            return <li>{item}</li>
+                        names.map((item)=>{
+                            return <li>{item}</li>;
                         })
                     }</ul>
                 </div>
