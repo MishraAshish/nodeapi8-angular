@@ -21,7 +21,7 @@ export default class App extends React.Component{
         return(//JSX
             <div>
                 <Header title={this.title}/>
-                <Home msg={this.state.homeMsg}>
+                <Home>
                     <p>{"2. Home Component Data"}</p>
                     <all.GetBody />
                 </Home>

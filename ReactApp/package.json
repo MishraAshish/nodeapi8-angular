@@ -14,6 +14,7 @@
   "license": "Synergisticit",
   "dependencies": {
     "babel-loader": "7.1.5",
+    "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
