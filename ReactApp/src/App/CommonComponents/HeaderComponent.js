@@ -5,9 +5,9 @@ import React from "react";
 let Header = (props) => {
     return(
         <div>
-            <h1>This is our header component</h1>
-            {props.children[0]}
-            {props.children[1]}
+            <b>{props.title}</b>
+            {/* {props.children[0]}
+            {props.children[1]} */}
         </div>
     )
 }
@@ -26,5 +26,14 @@ export function GetAge() {
         <div>
             <b>GetAge Function Called</b>
         </div>
+    )    
+}
+
+export function GetBody() {    
+    return(//JSX
+            <React.Fragment>
+                <b>3. This is the place where detail gets rendered</b>
+                <b>4. This is the place where detail gets rendered</b>
+            </React.Fragment>
     )    
 }
