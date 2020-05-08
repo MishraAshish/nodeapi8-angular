@@ -16,12 +16,15 @@ export default class App extends React.Component{
         this.title = "Shopping Cart Header";//Global variable/ expression
     }
 
+    getDataFromChild =(childMsg ) => {
+        alert(childMsg);
+    }
 
     render(){//virtual dom
         return(//JSX
             <div>
                 <Header title={this.title}/>
-                <Home>
+                <Home msg={this.state.homeMsg} sendToChild={this.getDataFromChild}>
                     <p>{"2. Home Component Data"}</p>
                     <all.GetBody />
                 </Home>
