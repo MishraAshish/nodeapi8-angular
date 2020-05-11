@@ -11,20 +11,24 @@ export default class App extends React.Component{
         this.state = {//initialized the state //comes from props or created here and mutable
             homeMsg:"1. This is Applications Home Component",
             footerMsg:"Thanks Your For Shopping",
-            year:2020
+            year:2020,
+            childMsg: "No Message"
         },
         this.title = "Shopping Cart Header";//Global variable/ expression
     }
 
     getDataFromChild =(childMsg ) => {
-        alert(childMsg);
+        //alert(childMsg);
+        this.setState({
+            childMsg:childMsg
+        })
     }
 
     render(){//virtual dom
         return(//JSX
             <div>
                 <Header title={this.title}/>
-                <Home msg={this.state.homeMsg} sendToChild={this.getDataFromChild}>
+                <Home msg={this.state.homeMsg} sendToChild={this.getDataFromChild} returnMsg={this.state.childMsg}>
                     <p>{"2. Home Component Data"}</p>
                     <all.GetBody />
                 </Home>
