@@ -1,7 +1,7 @@
 import React from "react";
 import {PropTypes} from "prop-types";
 
-export default class Home extends React.Component{
+export default class Home extends React.PureComponent{
     //Creation Life Cyle method
     constructor(props, context){
         super(props, context);
@@ -10,6 +10,8 @@ export default class Home extends React.Component{
             counter: 1
         }
         console.log("Constructor called first and only one time when component gets invoked.");
+
+        this.textInput = React.createRef(); //creating ref element : Needs to be avoided in actual use unless necessary
     }
 
     componentWillMount(){
@@ -20,6 +22,10 @@ export default class Home extends React.Component{
     componentDidMount(){
         console.log("Component LC - componentDidMount");
         // access the view, make ajax calls (server calls), call setState (update the state)
+
+        //accessing the actual DOM using ref keyword
+        //this.textInput.current.focus();
+        //this.textInput.current.value = "Setting Up Reference Value";
     }
 
     //Destruction Life Cyle method
@@ -34,16 +40,16 @@ export default class Home extends React.Component{
         console.log("componentWillReceiveProps -", nextProps);
     }
 
-    shouldComponentUpdate(nextProps, nextState){
-        console.log("shouldComponentUpdate -");
-        console.log("nextProps -", nextProps );
-        console.log("nextState -", nextState);
-        if (nextState.counter == 2 || nextState.counter == 4 || nextState.counter == 6) {
-            return true;
-        }else
-            return false;
-        //return true;
-    }
+    // shouldComponentUpdate(nextProps, nextState){
+    //     console.log("shouldComponentUpdate -");
+    //     console.log("nextProps -", nextProps );
+    //     console.log("nextState -", nextState);
+    //     if (nextState.counter == 2 || nextState.counter == 4 || nextState.counter == 6) {
+    //         return true;
+    //     }else
+    //         return false;
+    //     //return true;
+    // }
 
     // getSnapshotBeforeUpdate(prevState){
     //     console.log("getSnapshotBeforeUpdate ");
@@ -85,8 +91,11 @@ export default class Home extends React.Component{
                 <p><b>{this.state.counter}</b></p>
                 <button onClick={this.changeMessage}>Click Me</button>               
                 
-                <button onClick={()=> this.props.sendToChild(this.state.msg)}>Send Back Data To Parent</button>               
                 {/* This is a way to send data back to parent using a call back function */}
+                <button onClick={()=> this.props.sendToChild(this.state.msg)}>Send Back Data To Parent</button>               
+                
+                {/* this is ref element to be accessed directly in code */}
+                <input type="text" ref={this.textInput} value="learning ref in react"/>
             </React.Fragment>
         )
     }
