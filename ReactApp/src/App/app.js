@@ -1,39 +1,35 @@
 import React        from "react";
 import {Component, useState }  from "react";
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import "../App.css";
+
 import Header, * as all from "./CommonComponents/HeaderComponent";
 import Footer from "./CommonComponents/FooterComponent";
 import Home from "./CommonComponents/HomeComponent";
+import NotFound from "./CommonComponents/NotFound";
+import {About} from "./CommonComponents/AboutComponent";
 
 //export default class App extends Component{
-export default class App extends React.Component{
-    constructor(props, context){
-        super(props, context);
-        this.state = {//initialized the state //comes from props or created here and mutable
-            homeMsg:"1. This is Applications Home Component",
-            footerMsg:"Thanks Your For Shopping",
-            year:2020,
-            childMsg: "No Message"
-        },
-        this.title = "Shopping Cart Header";//Global variable/ expression
-    }
-
-    getDataFromChild =(childMsg ) => {
-        //alert(childMsg);
-        this.setState({
-            childMsg:childMsg
-        })
-    }
+export default class App extends React.Component{    
 
     render(){//virtual dom
+        let decide = 2;
         return(//JSX
-            <div>
-                <Header title={this.title}/>
-                <Home msg={this.state.homeMsg} sendToChild={this.getDataFromChild} returnMsg={this.state.childMsg}>
-                    <p>{"2. Home Component Data"}</p>
-                    <all.GetBody />
-                </Home>
-                <Footer msg={this.state.footerMsg} year={this.state.year}/>               
-            </div>
+            <Router>
+                <Header/>
+                <Switch>
+                    {/* <Route path="/home" render={()=>
+                                (decide == 1 ? 
+                                    (<Redirect to="/about/" />)
+                                        :(<Home/>)
+                                        )} />                    */}
+                    <Route path="/home" exact component={Home} />
+                    <Route path="/about" exact component={About} />
+                    <Route path="/about/:id" component={About} />
+                    <Route path="*" component={NotFound} />                    
+                </Switch>
+                <Footer/>               
+            </Router>
         )
     }
 }
@@ -41,6 +37,24 @@ export default class App extends React.Component{
 
 // export default class App_Old extends React.Component{
 //     //export default class App extends Component{
+
+    // constructor(props, context){
+    //     super(props, context);
+    //     this.state = {//initialized the state //comes from props or created here and mutable
+    //         homeMsg:"1. This is Applications Home Component",
+    //         footerMsg:"Thanks Your For Shopping",
+    //         year:2020,
+    //         childMsg: "No Message"
+    //     },
+    //     this.title = "Shopping Cart Header";//Global variable/ expression
+    // }
+
+    // getDataFromChild =(childMsg ) => {
+    //     //alert(childMsg);
+    //     this.setState({
+    //         childMsg:childMsg
+    //     })
+    // }
 //         render(){//virtual dom
 //             let a = 25, b = 26, framework = "React", version = "16.4";
 //             let title = `We are going to learn ${framework} Framework with version ${version}`;
@@ -61,7 +75,10 @@ export default class App extends React.Component{
 //                         <all.GetName />    
 //                         <all.GetAge />
 //                     </Header>
-                    
+                {/* <Home msg={this.state.homeMsg} sendToChild={this.getDataFromChild} returnMsg={this.state.childMsg}>
+                    <p>{"2. Home Component Data"}</p>
+                    <all.GetBody />
+                </Home> */}    
                     
 //                 </div>
 //             )

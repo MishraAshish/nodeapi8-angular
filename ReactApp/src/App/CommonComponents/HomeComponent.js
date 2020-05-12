@@ -28,8 +28,8 @@ export default class Home extends React.PureComponent{
         // access the view, make ajax calls (server calls), call setState (update the state)
 
         //accessing the actual DOM using ref keyword
-        this.textInput.current.focus();
-        this.textInput.current.value = "Setting Up Reference Value";
+        // this.textInput.current.focus();
+        // this.textInput.current.value = "Setting Up Reference Value";
     }
 
     //Destruction Life Cyle method
@@ -86,21 +86,34 @@ export default class Home extends React.PureComponent{
     render(){
         console.log("Component LC Render - ", this.state.msg);
         return(//React.Fragment Returns one parent element without any additional div or parent
-            <React.Fragment> 
-                <hr/>
-                <p><b>{this.state.msg}</b></p>
+            <div className={"loadimage"}>
+                    {this.state.Title}
+                    <br/>
+                    <b className="feature">{"Below Feature's We've Implemented in our project :"}</b>
+                    <ul>                     
+                        <li>Sign up new users</li>
+                        <li>Login existing users.</li>
+                        <li>Add products/items to user's cart.</li>
+                        <li>Save the user's cart.</li>
+                        <li>Checkout and pay for items.</li>
+                    </ul>
+                    <button onClick={()=> (this.props.history.push("/about/51"))}>GoTo About Page</button>
+            </div>
+            // <React.Fragment> 
+            //     <hr/>
+            //     <p><b>{this.state.msg}</b></p>
 
-                <p><b>{this.props.returnMsg}</b></p>
+            //     <p><b>{this.props.returnMsg}</b></p>
 
-                <p><b>{this.state.counter}</b></p>
-                <button onClick={this.changeMessage}>Click Me</button>               
+            //     <p><b>{this.state.counter}</b></p>
+            //     <button onClick={this.changeMessage}>Click Me</button>               
                 
-                {/* This is a way to send data back to parent using a call back function */}
-                <button onClick={()=> this.props.sendToChild(this.state.msg)}>Send Back Data To Parent</button>               
+            //     {/* This is a way to send data back to parent using a call back function */}
+            //     <button onClick={()=> this.props.sendToChild(this.state.msg)}>Send Back Data To Parent</button>               
                 
-                {/* this is ref element to be accessed directly in code */}
-                <input type="text" ref={this.textInput} value="learning ref in react"/>
-            </React.Fragment>
+            //     {/* this is ref element to be accessed directly in code */}
+            //     <input type="text" ref={this.textInput} value="learning ref in react"/>
+            // </React.Fragment>
         )
     }
 }

@@ -1,15 +1,11 @@
 "use strict";
 import React from "react";
 
-let Footer = (props)=>{ //props are immutable, only way
-    console.log("Footer Props :", props)
-    //props.msg = "asdasdas";// this must not be done, we should not update parent values coming as props
+const Footer = (props)=>{
     return(
-        <div>
-            <hr/>
-            <p>{props.msg}</p>
-            <p>Copyrights @{props.year} Synergisticit</p>
-        </div>
+        <div className="footer">
+            © Copyright 2019 All rights reserved. &nbsp;|&nbsp; SynergisticIT &nbsp;|&nbsp; <a href="http://www.synergisticit.com/sitemap.xml" target="_blank">Sitemap</a></div>
+        
     )
 }
 
