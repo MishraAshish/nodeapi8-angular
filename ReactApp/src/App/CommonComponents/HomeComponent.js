@@ -17,6 +17,10 @@ export default class Home extends React.PureComponent{
     componentWillMount(){
         //View is not ready and has been removed from raect 16
         console.log("Component LC - componentWillMount");
+
+        //view is not ready below code should remain commented
+        //this.textInput.current.focus();
+        //this.textInput.current.value = "Setting Up Reference Value";
     }
 
     componentDidMount(){
@@ -24,8 +28,8 @@ export default class Home extends React.PureComponent{
         // access the view, make ajax calls (server calls), call setState (update the state)
 
         //accessing the actual DOM using ref keyword
-        //this.textInput.current.focus();
-        //this.textInput.current.value = "Setting Up Reference Value";
+        this.textInput.current.focus();
+        this.textInput.current.value = "Setting Up Reference Value";
     }
 
     //Destruction Life Cyle method
