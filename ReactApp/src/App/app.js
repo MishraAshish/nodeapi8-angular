@@ -8,6 +8,8 @@ import Footer from "./CommonComponents/FooterComponent";
 import Home from "./CommonComponents/HomeComponent";
 import NotFound from "./CommonComponents/NotFound";
 import {About} from "./CommonComponents/AboutComponent";
+import User from "./ApplicationComponents/Container/User/UserContainer";
+
 
 //export default class App extends Component{
 export default class App extends React.Component{    
@@ -26,6 +28,7 @@ export default class App extends React.Component{
                     <Route path="/home" exact component={Home} />
                     <Route path="/about" exact component={About} />
                     <Route path="/about/:id" component={About} />
+                    <Route path="/user" exact component={User} />
                     <Route path="*" component={NotFound} />                    
                 </Switch>
                 <Footer/>               
