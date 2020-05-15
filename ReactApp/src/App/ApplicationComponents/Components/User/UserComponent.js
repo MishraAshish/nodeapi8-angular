@@ -12,6 +12,19 @@ export default class User extends Component{
         }
     }
     
+    //as we update the state in user reducer we need to update component when we recive it as props 
+    //once broadcated by store
+    componentWillReceiveProps(nextProps, nextState){
+        console.log("next props", nextProps);
+        this.setState({
+            userName: nextProps.user.userName,
+            password: nextProps.user.password,
+            street: nextProps.user.street,
+            mobile: nextProps.user.mobile
+        })
+    }
+
+
     onChangeText = (evt) => {
         // target is input element, real dom element, over which event is raised
         let target = evt.target;
@@ -20,7 +33,7 @@ export default class User extends Component{
         let typedValue = target.value;//reading the value with the help of target (html control)
                                             //which raised this event
               
-        console.log("Value Entered " + typedValue);
+        //console.log("Value Entered " + typedValue);
         
         if (classlist.indexOf("username")>=0) {
             this.setState({
@@ -50,6 +63,7 @@ export default class User extends Component{
     render(){
         return(
             <section className={"componentClass"}>
+                {/* <b>{this.props.user._id}</b> */}
                 <div className="form col-md-8">
                     <div className="col-md-12">
                         <b>User Name</b>

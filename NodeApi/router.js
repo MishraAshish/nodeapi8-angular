@@ -1,7 +1,42 @@
 let express = require("express"),
 routes = express.Router({caseSensitive:true}),
-testModel = require("./DataModel/TestModel");
+testModel = require("./DataModel/TestModel"),
+UserModel = require("./DataModel/UserModel");
 
+routes.post("/api/signInUpUser",(req, res)=>{
+    console.log(req.body);
+
+    UserModel.findOne({userName: req.body.userName}, (err, userObject) => {
+        if (err != null) {
+            console.log("Error :", err);
+            res.send({"Err":err});
+        } else if (userObject) {
+            res.json(userObject);
+        }else{
+           //No user with given user name present then create one 
+           //console.log("Body ", req.body);
+            let signObjForMongo = new UserModel(req.body);
+
+            // let signObjForMongo = new signInModel({
+            //     userName: req.body.userName,
+            //     password: req.body.password,
+            //     street: req.body.street,
+            //     mobile : req.body.mobile
+            //   });
+
+            //console.log("No Student Present, Adding!"); 
+            signObjForMongo.save((err, data, next)=>{        
+                if (err) {
+                    res.send("Error Occurred While Siging User "+ err);
+                }      
+                res.json(data);
+            });
+        }
+    });
+})
+
+
+//Pratice API's
 routes.get('/testuser',(req, res)=>{
     let qs = req.query;
     

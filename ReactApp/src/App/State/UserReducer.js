@@ -19,8 +19,11 @@ export default function userReducer(state=INITIAL_STATE, action) {
 
     switch (action.type) {
         case ActionTypes.AddUserToStore:
-            console.log("Payload Address", action.payload.user);
-                //...state = {user:user,trainingProduct:trainingProduct}
+            console.log("User PayLoad", action.payload.user);
+                //below code is maintaining the immutability of state using spread operator
+                //...state = {user:user,laoding:loading}
+                //it will pluck user obeject and update that with payload.user value
+                //then a complete new state would be returned from user reducer
                 return {...state, user: action.payload.user}
     
         default:
