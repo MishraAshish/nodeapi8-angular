@@ -1,16 +1,16 @@
 "use strict";
-//{props.user.userName}
 import React from "react";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
 //import {action} from "action/"
 
 let Header = (props) => {
+    let {userName, mobile} = props.user;
     //read user from props his name and then create two set of links
     return(
         <div className="col-md-12">
             <div>
-            <b>Hi {props.user.userName}, Welcome to Synergisticit Shopping Cart App</b>
+            <b>Hi {userName +", "+ mobile}, Welcome to Synergisticit Shopping Cart App</b>
             </div>
              <React.Fragment>
                  <NavLink to="/home" exact className="button" activeClassName="success" >Home </NavLink> 
