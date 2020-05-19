@@ -1,0 +1,55 @@
+import React, {Component} from "react";
+
+export default class CartItemComponent extends Component{
+    constructor(props, context){
+        super(props, context);
+        this.state = {
+            qty: props.item.qty
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            qty: nextProps.item.qty
+        });
+    }
+
+    //es next
+    onChangeQuantity = (e) => {
+        // target is input element, real dom element
+        let target = e.target;
+        this.setState({
+            qty: target.value
+        })
+    }
+
+    render() {
+        console.log("CartItem render", this.props.item.id);         
+        let {item} = this.props;
+        return(
+            <tr>
+                <td>{item.name}</td>
+                
+                <td>{item.price}</td>
+                
+                <td>
+                    <input value={this.state.qty} 
+                        type="number"
+                        onChange={this.onChangeQuantity}                        
+                    />                
+                </td> 
+                
+                <td> {item.price * item.qty} </td>
+                
+                <td>
+                    <button onClick={() => this.props.actions.updateItem(item.id, this.state.qty)}>
+                        Update
+                    </button>
+                    <button onClick={() => this.props.actions.removeItem(item.id)}>
+                        Remove
+                    </button>
+                </td>
+            </tr>
+        )
+    }
+}

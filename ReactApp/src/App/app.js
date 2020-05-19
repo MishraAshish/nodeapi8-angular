@@ -9,6 +9,7 @@ import Home from "./CommonComponents/HomeComponent";
 import NotFound from "./CommonComponents/NotFound";
 import {About} from "./CommonComponents/AboutComponent";
 import User from "./ApplicationComponents/Container/User/UserContainer";
+import Cart from "./ApplicationComponents/Container/Cart/CartContainer";
 
 
 //export default class App extends Component{
@@ -26,9 +27,11 @@ export default class App extends React.Component{
                                         :(<Home/>)
                                         )} />                    */}
                     <Route path="/home" exact component={Home} />
+                    <Route path="/cart" exact component={Cart} />
                     <Route path="/about" exact component={About} />
                     <Route path="/about/:id" component={About} />
                     <Route path="/user" exact component={User} />
+                    <Route path="/" exact component={Home} />
                     <Route path="*" component={NotFound} />                    
                 </Switch>
                 <Footer/>               

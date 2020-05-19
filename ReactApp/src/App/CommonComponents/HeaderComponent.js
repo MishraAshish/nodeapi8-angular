@@ -14,6 +14,7 @@ let Header = (props) => {
             </div>
              <React.Fragment>
                  <NavLink to="/home" exact className="button" activeClassName="success" >Home </NavLink> 
+                 <NavLink to="/cart" exact className="button" activeClassName="success" >Cart </NavLink>
                  <NavLink to="/user" exact className="button" activeStyle={{ color:'white'}} activeClassName="success" >Login  </NavLink>
                  <NavLink to="/about" exact className="button" activeClassName="success">About  </NavLink>
              </React.Fragment>

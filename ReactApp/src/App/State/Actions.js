@@ -8,7 +8,7 @@ export const addUserToStore = (user) => ({
 //ajax: asynchronous javascript and xml
 export const signInUpUser = (userObject) => {
     console.log('entering signin signup user');
-    debugger;
+    //debugger;
     // thunk, returns function as an action
     return function(dispatch, getState) {
         // here we go with ajax call
@@ -38,3 +38,28 @@ export const signInUpUser = (userObject) => {
         })
     }
 }
+
+//cart item operations
+export const addItemToCart = (item)=>({
+    type: ActionTypes.ADD_ITEM,
+    payload: {item} //{item:item}
+})
+
+export const removeItem = (id) => ({
+    type: ActionTypes.REMOVE_ITEM,
+    payload: {
+        id
+    }
+});
+
+export const emptyTheCart = () => ({
+    type: ActionTypes.EMPTY_CART
+});
+
+export const updateItem = (id, qty) => ({
+    type: ActionTypes.UPDATE_ITEM,
+    payload: {
+        id,
+        qty: parseInt(qty)
+    }
+});
