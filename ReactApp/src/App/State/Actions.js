@@ -31,7 +31,7 @@ export const signInUpUser = (userObject) => {
             let action = addUserToStore(userresp);
             dispatch(action);
             //dispatch(loading(false));
-            //dispatch(getCartItems(userresp._id))
+            dispatch(getUserCart(userresp._id));
         })
         .catch((err)=>{
             console.log("Error While Login", err)
@@ -63,3 +63,51 @@ export const updateItem = (id, qty) => ({
         qty: parseInt(qty)
     }
 });
+
+export const saveItemsForCheckout = (items, userid) => {
+    console.log("Items To Be Saved", items); 
+
+    window.fetch("http://localhost:9090/api/saveUserCart",{
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({userid:userid, cart:items})})
+    .then (response => response.json())
+    .then (usercartresponse => {
+        console.log("response ", usercartresponse);
+    })
+    .catch((err)=>{
+        console.log("Error While Saving Cart", err);
+    }) 
+}
+
+export const getUserCart = (userid) => {
+    
+    return function(dispatch) {
+        console.log("Get List Of items");
+        
+        window.fetch("http://localhost:9090/api/getUserCart",{
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({userid:userid})})
+        .then (response => response.json())
+        .then (usercartresponse => {
+            console.log("response ", usercartresponse);
+            
+            for (const item of usercartresponse.cart) {
+                console.log("item in for of", item);
+                let action = addItemToCart(item);
+                dispatch(action);    
+            }
+            
+        })
+        .catch((err)=>{
+            console.log("Error While Login", err)
+        })  
+    }       
+}

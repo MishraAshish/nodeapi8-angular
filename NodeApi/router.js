@@ -1,7 +1,48 @@
 let express = require("express"),
 routes = express.Router({caseSensitive:true}),
 testModel = require("./DataModel/TestModel"),
-UserModel = require("./DataModel/UserModel");
+UserModel = require("./DataModel/UserModel"),
+cartModel = require("./DataModel/CartModel");
+
+routes.post("/api/saveUserCart",(req, res)=>{
+    cartModel.findOne({userid: req.body.userid},(err, cartDbObj) => {
+        console.log("We Found One - ",cartDbObj);
+        if (err){
+            console.log("got an error!");            
+            res.send(err);
+        }
+        if (!cartDbObj) {
+          console.log("No cartitems Present, Adding!"); 
+          let cartObj = new cartModel(req.body);
+          cartObj.save((err, data, next)=>{        
+            if (err) {
+                res.send("Error Occurred"+ err);
+            }      
+            res.json(data);
+          });
+        }else{
+          console.log("No CartItem Present, Replacing!");
+          cartDbObj.cart = req.body.cart
+          cartDbObj.save((err, data, next)=>{        
+            if (err) {
+                res.send("Error Occurred"+ err);
+            }      
+            res.json(data);
+          });
+        }
+  });
+
+});
+
+routes.post("/api/getUserCart",(req, res)=>{
+    cartModel.findOne({userid: req.body.userid},(err, cart) => {         
+        if (err) {
+            res.send("Error Occurred"+ err);
+        }      
+        res.json(cart);
+      });
+});
+
 
 routes.post("/api/signInUpUser",(req, res)=>{
     console.log(req.body);

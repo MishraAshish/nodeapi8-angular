@@ -20,13 +20,10 @@ export default function CartComponent(props){
             <CartListComponent/>            
             <CartSummaryComponent/>
 
-            {/* <button onClick={() => props.saveCartItems(props.items, props.userid)} >
-                Save For Checkout
-            </button> */}
-
-            <button>
+            <button onClick={() => props.saveItemsForCheckout(props.items, props.user._id)} >
                 Save For Checkout
             </button>
+
         </div>
     )
 }

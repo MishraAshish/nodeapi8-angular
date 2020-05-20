@@ -1,11 +1,13 @@
 import {connect} from "react-redux";
 import CartComponent from "../../Components/Cart/CartComponent";
-import {addItemToCart, emptyTheCart} from '../../../State/Actions';
+import {addItemToCart, emptyTheCart, saveItemsForCheckout} from '../../../State/Actions';
 
 const mapStateToProps = (state)=>{
     return{
         user:state.user.user,
-        cartlength:state.cart.length
+        cartlength:state.cart.length,
+        items:state.cart,
+
     }
 }
 
@@ -28,6 +30,19 @@ const mapDispatchToProps = (dispatch)=>{
         emptyTheCart: () =>{
             dispatch(emptyTheCart())
         },
+
+        saveItemsForCheckout: (items,userid)=>{
+             if (userid) {
+                if (items && items.length>=1) {
+                    dispatch(saveItemsForCheckout(items, userid));    
+                } else {
+                    alert("Please add items to cart!");
+                }                  
+            }
+            else{ 
+                alert("Please Login to save cart!");
+            }
+        }
     }
 }
 
