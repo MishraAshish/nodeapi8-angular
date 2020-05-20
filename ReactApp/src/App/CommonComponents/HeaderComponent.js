@@ -10,14 +10,22 @@ let Header = (props) => {
     return(
         <div className="col-md-12">
             <div>
-            <b>Hi {userName +", "+ mobile}, Welcome to Synergisticit Shopping Cart App</b>
+            <b>Hi {userName}, Welcome to Synergisticit Shopping Cart App</b>
             </div>
+            {userName != "" ?
              <React.Fragment>
                  <NavLink to="/home" exact className="button" activeClassName="success" >Home </NavLink> 
                  <NavLink to="/cart" exact className="button" activeClassName="success" >Cart </NavLink>
+                 <NavLink to="/user" exact className="button" activeStyle={{ color:'white'}} activeClassName="success" >Admin  </NavLink>
+                 <NavLink to="/about" exact className="button" activeClassName="success">About  </NavLink>
+             </React.Fragment>
+             :
+             <React.Fragment>
+                 <NavLink to="/home" exact className="button" activeClassName="success" >Home </NavLink> 
                  <NavLink to="/user" exact className="button" activeStyle={{ color:'white'}} activeClassName="success" >Login  </NavLink>
                  <NavLink to="/about" exact className="button" activeClassName="success">About  </NavLink>
              </React.Fragment>
+             }
          </div>
     )
 }
