@@ -6,8 +6,7 @@ const mapStateToProps = (state)=>{
     return{
         user:state.user.user,
         cartlength:state.cart.length,
-        items:state.cart,
-
+        cart:state.cart
     }
 }
 
@@ -31,10 +30,10 @@ const mapDispatchToProps = (dispatch)=>{
             dispatch(emptyTheCart())
         },
 
-        saveItemsForCheckout: (items,userid)=>{
+        saveItemsForCheckout: (cart,userid)=>{
              if (userid) {
-                if (items && items.length>=1) {
-                    dispatch(saveItemsForCheckout(items, userid));    
+                if (cart && cart.length>=1) {
+                    dispatch(saveItemsForCheckout(cart, userid));    
                 } else {
                     alert("Please add items to cart!");
                 }                  

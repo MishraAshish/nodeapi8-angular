@@ -64,8 +64,8 @@ export const updateItem = (id, qty) => ({
     }
 });
 
-export const saveItemsForCheckout = (items, userid) => {
-    console.log("Items To Be Saved", items); 
+export const saveItemsForCheckout = (cart, userid) => {
+    console.log("Items To Be Saved", cart); 
 
     window.fetch("http://localhost:9090/api/saveUserCart",{
         method: 'POST',
@@ -73,7 +73,7 @@ export const saveItemsForCheckout = (items, userid) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({userid:userid, cart:items})})
+        body: JSON.stringify({userid:userid, cart:cart})})
     .then (response => response.json())
     .then (usercartresponse => {
         console.log("response ", usercartresponse);
