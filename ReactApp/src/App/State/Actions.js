@@ -77,6 +77,7 @@ export const saveItemsForCheckout = (cart, userid) => {
     .then (response => response.json())
     .then (usercartresponse => {
         console.log("response ", usercartresponse);
+        dispatch(loading(false));
     })
     .catch((err)=>{
         console.log("Error While Saving Cart", err);
@@ -87,7 +88,6 @@ export const getUserCart = (userid) => {
     
     return function(dispatch) {
         console.log("Get List Of items");
-        
         window.fetch("http://localhost:9090/api/getUserCart",{
             method: 'POST',
             headers: {
@@ -103,11 +103,17 @@ export const getUserCart = (userid) => {
                 console.log("item in for of", item);
                 let action = addItemToCart(item);
                 dispatch(action);    
-            }
-            
+            }           
         })
         .catch((err)=>{
             console.log("Error While Login", err)
         })  
     }       
 }
+
+export const loading = (loading) => ({
+    type: "LOADING",
+    payload: {
+        loading
+    }
+});

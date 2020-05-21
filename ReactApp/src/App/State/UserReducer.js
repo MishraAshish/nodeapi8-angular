@@ -11,12 +11,11 @@ const INITIAL_STATE ={
         mobile: "",
         _id:""
     },
-    loading: false
+    //loading: false
 }
 
 //whenever called reducer will always return a state
 export default function userReducer(state=INITIAL_STATE, action) {
-
     switch (action.type) {
         case ActionTypes.AddUserToStore:
             console.log("User PayLoad", action.payload.user);
@@ -29,7 +28,6 @@ export default function userReducer(state=INITIAL_STATE, action) {
                 //it will pluck user obeject and update that with payload.user value
                 //then a complete new state would be returned from user reducer
                 return {...state, user: action.payload.user}
-    
         default:
             return state
     }

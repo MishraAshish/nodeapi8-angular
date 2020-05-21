@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';//make aync call to api
 
 import user from "./App/State/UserReducer";
 import cart from "./App/State/CartReducer";
+import loading from "./App/State/LoadingReducer";
 
 let myLogger = () => (next) => (action) => {    
     console.log("Logged Action : Store File ", action);
@@ -14,7 +15,8 @@ export default createStore(
     combineReducers(
     {
         user,
-        cart
+        cart,
+        loading
     }),
     {},
     applyMiddleware(myLogger,thunk,promise)    
