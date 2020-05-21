@@ -2,8 +2,36 @@ let express = require("express"),
 routes = express.Router({caseSensitive:true}),
 testModel = require("./DataModel/TestModel"),
 UserModel = require("./DataModel/UserModel"),
-cartModel = require("./DataModel/CartModel");
+cartModel = require("./DataModel/CartModel"),
+productModel = require("./DataModel/ProductModel");
 
+//product routes or product api's
+routes.post("/api/saveProduct",(req, res)=>{
+    
+    let productObj = new productModel(req.body);
+
+    productObj.save((err, data, next)=>{        
+        if (err) {
+            res.send("Error Occurred"+ err);
+        }      
+        res.json(data);
+    });
+});
+
+routes.get("/api/getProducts",(req, res)=>{
+    productModel.find((err, data, next) =>{
+        console.log("Data :", err);
+
+        err ? 
+        res.send({"erro": err}) 
+        :
+        res.send(
+            data
+        )
+    })
+});
+
+//cart routes or cart api's
 routes.post("/api/saveUserCart",(req, res)=>{
     cartModel.findOne({userid: req.body.userid},(err, cartDbObj) => {
         console.log("We Found One - ",cartDbObj);

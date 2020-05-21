@@ -111,9 +111,34 @@ export const getUserCart = (userid) => {
     }       
 }
 
+// to check if job is complete or not
 export const loading = (loading) => ({
     type: "LOADING",
     payload: {
         loading
     }
 });
+
+export const saveProduct = (product)=>{
+    console.log("Product ", product);
+    return function (dispatch) {
+        dispatch(loading(true));
+
+        window.fetch("http://localhost:9090/api/saveProduct",{
+            method: 'POST', //rest method type 
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+        .then(productresp => productresp.json())
+        .then((productresp)=>{
+            console.log("response ", productresp);
+            dispatch(loading(false));
+        })
+        .catch((err)=>{
+            console.log("Error While Login", err)
+        })
+    }
+};
