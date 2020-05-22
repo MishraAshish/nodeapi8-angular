@@ -1,5 +1,6 @@
-//returns product reducer
+import * as ActionTypes from "./ActionTypes";
 
+//returns product reducer
 const INITIAL_STATE = {
     defaultProduct:{
         name : "",
@@ -8,15 +9,18 @@ const INITIAL_STATE = {
         ram : "",
         display : "",
         color : ""
-    }
+    },
+    products:[]
 }
 
 export default function ProductReducer(state=INITIAL_STATE,action)
 {
+    console.log("Product Reducer :",state);
+    //debugger;
     switch (action.type) {
-    
+        case (ActionTypes.FETCH_PRODUCTS_FULFILLED):
+            return {...state, products:action.payload}
         default:
             return state;
     }
 }
-

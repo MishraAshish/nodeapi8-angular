@@ -415,18 +415,19 @@ optgroup {
   width: 50%;
   margin-left: 0%;
 }
-.productdetail{
+
+.product{
   cursor: pointer;
-  background-color: #f8f8f8;
+  background-color: #dbf8cf;
 }
-.productdetail:hover{
-  text-decoration: underline;
+.product:hover{
+  text-decoration: none;
   text-decoration-color: whitesmoke;
   color: #fff;
-  background-color: #046dc9;
+  background-color: #ff851b;
 }
-.productdetailSubitems{
-    background-color: #ddd;
+.productDetails{
+    background-color: #ff851b;
     color: blue;
     text-decoration: none;
   }

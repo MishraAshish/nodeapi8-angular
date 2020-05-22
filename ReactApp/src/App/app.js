@@ -11,6 +11,7 @@ import {About} from "./CommonComponents/AboutComponent";
 import User from "./ApplicationComponents/Container/User/UserContainer";
 import Cart from "./ApplicationComponents/Container/Cart/CartContainer";
 import Product from "./ApplicationComponents/Container/Product/ProductContainer";
+import DisplayProduct from "./ApplicationComponents/Container/Product/DisplayProductsContainer";
 
 //export default class App extends Component{
 export default class App extends React.Component{    
@@ -29,6 +30,8 @@ export default class App extends React.Component{
                     <Route path="/home" exact component={Home} />
                     <Route path="/cart" exact component={Cart} />
                     <Route path="/product" exact component={Product} />
+                    <Route path="/show" exact component={DisplayProduct} />
+                    
                     <Route path="/about" exact component={About} />
                     <Route path="/about/:id" component={About} />
                     <Route path="/user" exact component={User} />
