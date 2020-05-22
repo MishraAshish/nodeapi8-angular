@@ -136,6 +136,7 @@ export const saveProduct = (product)=>{
         .then((productresp)=>{
             console.log("response ", productresp);
             dispatch(loading(false));
+            dispatch(fetchProducts());
         })
         .catch((err)=>{
             console.log("Error While Login", err)

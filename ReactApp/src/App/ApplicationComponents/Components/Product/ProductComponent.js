@@ -1,5 +1,6 @@
 "use strict"
 import React from "react";
+import DisplayProductsComponent from "../../Container/Product/DisplayProductsContainer";
 
 export default class ProductComponent extends React.Component{
 
@@ -116,7 +117,10 @@ export default class ProductComponent extends React.Component{
                     
                     <input type="button" className={"btn btn-primary col-md-3"} value={"Save Product"} onClick={this.saveProduct}/>
                 </div>
-
+                
+                <br/>
+                
+                <DisplayProductsComponent />
             </section>
         )
     }
