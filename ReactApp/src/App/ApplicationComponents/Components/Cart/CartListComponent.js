@@ -27,7 +27,7 @@ export default function CartListComponent(props) {
                         items.map (item => (
                             <CartItemComponent item={item}
                                         key={item.id}
-                                    // donotshowInputBox={props.donotshowInputBox}
+                                        donotshowInputBox={props.donotshowInputBox}
                             />
                         ))
                     }        

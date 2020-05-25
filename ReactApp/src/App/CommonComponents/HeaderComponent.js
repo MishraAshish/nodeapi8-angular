@@ -17,7 +17,8 @@ let Header = (props) => {
                  <NavLink to="/home" exact className="button" activeClassName="success" >Home </NavLink> 
                  <NavLink to="/cart" exact className="button" activeClassName="success" >Cart </NavLink>
                  <NavLink to="/product" exact className="button" activeClassName="success" >Product </NavLink>
-                 <NavLink to="/show" exact className="button" activeClassName="success" >DisplayProduct </NavLink>
+                 {/* <NavLink to="/show" exact className="button" activeClassName="success" >DisplayProduct </NavLink> */}
+                 <NavLink to="/checkout" exact className="button" activeClassName="success" >Checkout </NavLink>
                  <NavLink to="/user" exact className="button" activeStyle={{ color:'white'}} activeClassName="success" >Admin  </NavLink>
                  <NavLink to="/about" exact className="button" activeClassName="success">About  </NavLink>
              </React.Fragment>

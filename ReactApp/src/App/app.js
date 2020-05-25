@@ -12,6 +12,7 @@ import User from "./ApplicationComponents/Container/User/UserContainer";
 import Cart from "./ApplicationComponents/Container/Cart/CartContainer";
 import Product from "./ApplicationComponents/Container/Product/ProductContainer";
 import DisplayProduct from "./ApplicationComponents/Container/Product/DisplayProductsContainer";
+import Checkout from "./ApplicationComponents/Container/Checkout/CheckoutContainer";
 
 //export default class App extends Component{
 export default class App extends React.Component{    
@@ -31,7 +32,7 @@ export default class App extends React.Component{
                     <Route path="/cart" exact component={Cart} />
                     <Route path="/product" exact component={Product} />
                     <Route path="/show" exact component={DisplayProduct} />
-                    
+                    <Route path="/checkout" exact component={Checkout} />                                        
                     <Route path="/about" exact component={About} />
                     <Route path="/about/:id" component={About} />
                     <Route path="/user" exact component={User} />

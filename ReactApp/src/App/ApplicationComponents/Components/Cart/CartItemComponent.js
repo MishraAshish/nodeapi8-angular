@@ -33,21 +33,33 @@ export default class CartItemComponent extends Component{
                 <td>{item.price}</td>
                 
                 <td>
+                    {!this.props.donotshowInputBox ?
                     <input value={this.state.qty} 
                         type="number"
                         onChange={this.onChangeQuantity}                        
                     />                
+                    :
+                    item.qty
+                    }
                 </td> 
                 
                 <td> {item.price * item.qty} </td>
                 
                 <td>
-                    <button onClick={() => this.props.actions.updateItem(item.id, this.state.qty)}>
-                        Update
-                    </button>
-                    <button onClick={() => this.props.actions.removeItem(item.id)}>
-                        Remove
-                    </button>
+                    {
+                    !this.props.donotshowInputBox 
+                    ?
+                    <React.Fragment>
+                        <button onClick={() => this.props.actions.updateItem(item.id, this.state.qty)}>
+                            Update
+                        </button>
+                        <button onClick={() => this.props.actions.removeItem(item.id)}>
+                            Remove
+                        </button>
+                    </React.Fragment>
+                    :
+                    ""
+                    }
                 </td>
             </tr>
         )
