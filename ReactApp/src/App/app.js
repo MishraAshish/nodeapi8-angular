@@ -1,5 +1,5 @@
 import React        from "react";
-import {Component, useState }  from "react";
+//import {Component, useState }  from "react";
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import "../App.css";
 
@@ -8,12 +8,43 @@ import Footer from "./CommonComponents/FooterComponent";
 import Home from "./CommonComponents/HomeComponent";
 import NotFound from "./CommonComponents/NotFound";
 import {About} from "./CommonComponents/AboutComponent";
-import User from "./ApplicationComponents/Container/User/UserContainer";
-import Cart from "./ApplicationComponents/Container/Cart/CartContainer";
-import Product from "./ApplicationComponents/Container/Product/ProductContainer";
-import DisplayProduct from "./ApplicationComponents/Container/Product/DisplayProductsContainer";
+//import User from "./ApplicationComponents/Container/User/UserContainer";
+//import Cart from "./ApplicationComponents/Container/Cart/CartContainer";
+//import Product from "./ApplicationComponents/Container/Product/ProductContainer";
+//import DisplayProduct from "./ApplicationComponents/Container/Product/DisplayProductsContainer";
 import Checkout from "./ApplicationComponents/Container/Checkout/CheckoutContainer";
 import Coupon from "./ApplicationComponents/Container/Coupon/CouponContainer";
+
+import Loadable from "react-loadable"; //allows lazy loading
+// functional component, used as placeholder
+//when lazy loaded modules delayed
+function Loading() {
+    return (
+        <div>
+            Loading Project...
+        </div>
+    )
+}
+
+const User = Loadable({
+    loader: () => import('./ApplicationComponents/Container/User/UserContainer'),
+    loading: Loading,
+});
+
+const Cart = Loadable({
+    loader: () => import('./ApplicationComponents/Container/Cart/CartContainer'),
+    loading: Loading,
+});
+
+const Product = Loadable({
+    loader: () => import('./ApplicationComponents/Container/Product/ProductContainer'),
+    loading: Loading,
+});
+
+const DisplayProduct = Loadable({
+    loader: () => import('./ApplicationComponents/Container/Product/DisplayProductsContainer'),
+    loading: Loading,
+});
 
 //export default class App extends Component{
 export default class App extends React.Component{    

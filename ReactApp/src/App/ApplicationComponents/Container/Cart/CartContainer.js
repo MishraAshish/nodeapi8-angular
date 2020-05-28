@@ -3,7 +3,7 @@ import CartComponent from "../../Components/Cart/CartComponent";
 import {addItemToCart, emptyTheCart, saveItemsForCheckout} from '../../../State/Actions';
 
 const mapStateToProps = (state)=>{
-    debugger;
+    //debugger;
     return{
         user:state.user.user,
         cartlength:state.cart.length,
