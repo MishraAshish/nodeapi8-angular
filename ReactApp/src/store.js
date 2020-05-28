@@ -6,6 +6,7 @@ import user from "./App/State/UserReducer";
 import cart from "./App/State/CartReducer";
 import loading from "./App/State/LoadingReducer";
 import product from "./App/State/ProductReducer";
+import coupon from "./App/State/CouponReducer";
 
 let myLogger = () => (next) => (action) => {    
     console.log("Logged Action : Store File ", action);
@@ -18,7 +19,8 @@ export default createStore(
         user,
         cart,
         loading,
-        product
+        product,
+        coupon
     }),
     {},
     applyMiddleware(myLogger,thunk,promise)    

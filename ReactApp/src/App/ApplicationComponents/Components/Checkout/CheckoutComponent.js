@@ -22,8 +22,8 @@ export default function Checkout(props){
                 <h2>Checking out </h2>  
                 <div className="col-md-12">  
                 <b>Hi, {props.user.userName != "" ? props.user.userName: "Tom"} </b>  
-                 
-                
+                <br/>
+                <b>{props.couponCode != "" ? "Coupon Code "+props.couponCode+" has been applied successfully": "Please generate coupon before payment you may get some discounts"}</b>
                 </div>  
                 <CheckoutList donotshowInputBox={true}/>  
                 <CheckoutSummary/>  
