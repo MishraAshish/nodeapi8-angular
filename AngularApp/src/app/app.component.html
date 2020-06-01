@@ -1,0 +1,19 @@
+{{title}} <!--Interpolation-->
+
+<app-cart></app-cart>
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <h1>This is my first message as hello world in angular! All thanks to angular cli</h1>
+  <br/>
+</div>
+
+<br/>
+
+<input type="text" value={{textBoxVal}} (keyup)="nameChange($event)" />
+<br />
+{{typedStuffByUser}}
+
+<br />
+<input type="button" value="update" (click)="updateUserData()">
+
+<router-outlet></router-outlet>
