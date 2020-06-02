@@ -1,0 +1,20 @@
+<br />  
+
+<input type="text" [value]="textBoxVal" (keyup)="nameChange($event)" />
+
+<br />
+
+{{typedStuffByUser}} <!-- interpolation -->
+  
+<br />
+
+<input type="button" [value]="buttonName" (click)="updateUserData($event)">
+<p>welcome works!</p>
+
+<div *ngIf="exampleNGIf == 'show'">
+    We are showing conditionally - {{exampleNGIf}}
+</div>
+
+<ul *ngFor="let name of names">
+    <li>{{name|lowercase}}</li>
+</ul>
