@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-//import { CartComponent } from "./cart/cart.component";
+import { Router } from '@angular/router';
+import { WelcomeComponent } from "./welcome/welcome.component";
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,12 @@ import { Component } from '@angular/core';
 
 export class AppComponent {//We should assume each component as a controller
   title = 'AngularApp With Synergisticit';
+
+  constructor(private router: Router){
+
+  }
+
+  navigateToProduct(){
+    this.router.navigateByUrl("/product");
+  }
 }
