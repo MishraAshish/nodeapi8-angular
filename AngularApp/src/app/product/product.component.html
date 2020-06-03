@@ -1,1 +1,11 @@
 <p>product works!</p>
+
+<ul class="productTable">
+    <li *ngFor="let product of products">
+        <b>{{product.name|uppercase}} / ${{product.price}}</b>
+        
+        <p> {{product.display|lowercase}} </p>
+    </li>
+</ul>
+
+{{title}}

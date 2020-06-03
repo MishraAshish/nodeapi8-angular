@@ -6,6 +6,7 @@ import {UserService} from "../user.service";
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
+
 export class ProductComponent implements OnInit {
 
   title = 'Angular Products';
@@ -16,16 +17,21 @@ export class ProductComponent implements OnInit {
     this.title = "Angular Application Title";
   }
 
+  callSet(){
+    setTimeout(() => {
+      this.title = this.title + "Test";
+    }, 2000);
+  }  
 
   ngOnInit(){
+    this.callSet();
     this.userService.getAllProducts().subscribe(
-        (data: any[])=>{
+        (data: any[])=>{ //success : callback of observable object
           console.log(data);
           this.products = data;
         },
-        (error) => console.log(error),
+        (error) => console.log(error), //error: callbak of observable object
         () => console.log("Complete")
         ) 
   }
-
 }
