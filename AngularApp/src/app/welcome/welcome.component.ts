@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChildComponent } from '../child/child.component';
 
 @Component({
   selector: 'app-welcome',
@@ -11,8 +12,11 @@ export class WelcomeComponent implements OnInit {
   typedStuffByUser = "";
   buttonName = "update"; //to be used as Property Binding using []
   exampleNGIf = "show";
-  names = ["Him","Rich","Andrew","Linh","Ashish"]
+  names = ["Him","Rich","Andrew","Linh","Ashish"];
+  
+  message = "I am from Welcom (parent)"; //To be used as input in child component to receive from parent
 
+  secretMessageFromChild = "";
   constructor() { 
     //let myValue:string=""; typesafe
     //myValue = 25;
@@ -21,6 +25,12 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {
     console.log("ngOnInit - initializes your component");
   } 
+
+  //below code to read callback event message from child
+  receiveMesssage($event){
+    debugger;
+    this.secretMessageFromChild = $event;
+  }
 
   nameChange(evt){
     let typedValue = evt.target.value;

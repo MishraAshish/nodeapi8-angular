@@ -18,3 +18,9 @@
 <ul *ngFor="let name of names">
     <li>{{name|lowercase}}</li>
 </ul>
+<b>secretMessageFromChild : {{secretMessageFromChild}}</b>
+<app-child
+    [messageFromParent]="message"
+    (outputMessage)="receiveMesssage($event)"
+>
+</app-child>
