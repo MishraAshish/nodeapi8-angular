@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   register(form){
     //debugger;
-    console.log(form.value);
+    console.log(form.value); //json object of all the input boxes and its attributes
     this.userService.signinUser(form.value).subscribe(
       (data: any[])=>{ //success : callback of observable object
         console.log(data);

@@ -5,3 +5,10 @@
 
 <!-- This code is to send data through Output -->
 <input type="button" value="SendToParent" (click)="sendMessageToParent()"/>
+
+<hr/>
+<ul class="productTable">
+    <li *ngFor="let product of productList">
+        <b>{{product.name|uppercase}}</b>
+    </li>
+</ul>

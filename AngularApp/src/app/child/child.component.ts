@@ -1,4 +1,5 @@
 import { Component, OnInit, Input,  Output, EventEmitter } from '@angular/core';
+import { ProductService } from "../product.service";
 
 @Component({
   selector: 'app-child',
@@ -12,8 +13,10 @@ export class ChildComponent implements OnInit {
 
   messageForPViewChild : string = "This message is from child to support view child";
 
-  constructor() { 
-    console.log("ChildComponent-Constructor")
+  productList = [];
+
+  constructor(private productService : ProductService) { 
+    console.log("ChildComponent-Constructor");    
   }
 
   sendMessageToParent(){
@@ -23,7 +26,10 @@ export class ChildComponent implements OnInit {
   
   ngOnInit(): void {
     console.log("ChildComponent- ngOnInit");
-    this.callSet()
+    this.callSet();
+    this.productService.currentProdList.subscribe((products)=>{
+        this.productList = products;
+    })
   }
 
   callSet(){

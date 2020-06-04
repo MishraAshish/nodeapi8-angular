@@ -33,13 +33,24 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(){
     this.callSet();
+
+    this.productService.currentProdList.subscribe((productList)=>{
+        console.log("productList :",productList);
+        
+        productList.length >=1 ? this.products = productList : this.getProductsFromServer();
+    });     
+  }
+
+  getProductsFromServer(){
     this.productService.getAllProducts().subscribe(
-        (data: any[])=>{ //success : callback of observable object
+        (data: [])=>{ //success : callback of observable object //or  :any[]
           console.log(data);
           this.products = data;
+          this.productService.updateproductList(data);
         },
         (error) => console.log(error), //error: callbak of observable object
         () => console.log("Complete")
-        ) 
+      )
   }
+
 }
