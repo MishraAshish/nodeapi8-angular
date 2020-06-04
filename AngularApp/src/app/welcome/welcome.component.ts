@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ChildComponent } from '../child/child.component';
 
 @Component({
@@ -7,7 +7,7 @@ import { ChildComponent } from '../child/child.component';
   styleUrls: ['./welcome.component.css']
 })
 
-export class WelcomeComponent implements OnInit {
+export class WelcomeComponent {
   textBoxVal:string = "My Name"; //class attributes
   typedStuffByUser = "";
   buttonName = "update"; //to be used as Property Binding using []
@@ -15,21 +15,39 @@ export class WelcomeComponent implements OnInit {
   names = ["Him","Rich","Andrew","Linh","Ashish"];
   
   message = "I am from Welcom (parent)"; //To be used as input in child component to receive from parent
-
   secretMessageFromChild = "";
-  constructor() { 
+
+  childsMsgAsViewChild = "";
+
+  @ViewChild(ChildComponent) child;
+  
+  constructor(private cdr : ChangeDetectorRef) { 
     //let myValue:string=""; typesafe
     //myValue = 25;
+    console.log("Welcome-Constructor")
   }
 
-  ngOnInit(): void {
-    console.log("ngOnInit - initializes your component");
-  } 
+  ngAfterViewInit(){ //This needs to be implemented for access child components properties
+    console.log("WelcomeComponent.ngAfterViewInit()")
+    this.childsMsgAsViewChild = this.child.messageForPViewChild;
+  }
+
+  ngAfterViewChecked(){ //Helps re-rendering of parent component once recieved content as view child
+    //your code to update the model
+    this.cdr.detectChanges();
+  }
+
+  // ngOnInit(){
+  //   console.log("ngOnInit - initializes your component - Welcome");
+  // } 
 
   //below code to read callback event message from child
   receiveMesssage($event){
-    debugger;
+    //debugger;
     this.secretMessageFromChild = $event;
+    
+    this.childsMsgAsViewChild = this.child.messageForPViewChild; //Re-assigned value updated in view child
+    this.cdr.detectChanges(); //change detector for view child
   }
 
   nameChange(evt){
@@ -41,5 +59,4 @@ export class WelcomeComponent implements OnInit {
     this.typedStuffByUser = "Updated value on button click"
     this.exampleNGIf = "Hide";
   }
-
 }

@@ -6,20 +6,30 @@ import { Component, OnInit, Input,  Output, EventEmitter } from '@angular/core';
   styleUrls: ['./child.component.css']
 })
 export class ChildComponent implements OnInit {
-
+  
   @Input() messageFromParent : string;
-
   @Output() outputMessage = new EventEmitter<string>();
 
-  constructor() { }
+  messageForPViewChild : string = "This message is from child to support view child";
+
+  constructor() { 
+    console.log("ChildComponent-Constructor")
+  }
 
   sendMessageToParent(){
-    debugger;
+    //debugger;
     this.outputMessage.emit("Message from child (Through Output)")
   }
   
   ngOnInit(): void {
-
+    console.log("ChildComponent- ngOnInit");
+    this.callSet()
   }
+
+  callSet(){
+    setTimeout(() => {
+      this.messageForPViewChild = "Test View Child if child updates async";
+    }, 4000);
+  } 
 
 }
