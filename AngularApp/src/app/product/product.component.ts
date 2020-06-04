@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../user.service";
+import {ProductService} from "../product.service";
 
 @Component({
   selector: 'app-product',
@@ -13,7 +13,7 @@ export class ProductComponent implements OnInit {
   products = [];
 
 
-  constructor(private userService: UserService){
+  constructor(private productService: ProductService){
     this.title = "Angular Application Title";
   }
 
@@ -25,7 +25,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(){
     this.callSet();
-    this.userService.getAllProducts().subscribe(
+    this.productService.getAllProducts().subscribe(
         (data: any[])=>{ //success : callback of observable object
           console.log(data);
           this.products = data;
