@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../product.service";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-product',
@@ -11,10 +12,17 @@ export class ProductComponent implements OnInit {
 
   title = 'Angular Products';
   products = [];
+  userInfo = {
+    userName:""
+  };
 
-
-  constructor(private productService: ProductService){
+  constructor(private productService: ProductService, private userService: UserService){
     this.title = "Angular Application Title";
+    this.userService.currentUserInfo.subscribe((data)=>{
+        //debugger;
+        console.log("User Data ",data);
+        this.userInfo = data;
+    })
   }
 
   callSet(){

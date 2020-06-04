@@ -1,5 +1,7 @@
 <p>product works!</p>
 
+<b *ngIf="userInfo.userName != undefined ">You are currently logged in as - {{userInfo.userName}}</b>
+
 <ul class="productTable">
     <li *ngFor="let product of products">
         <b>{{product.name|uppercase}} / ${{product.price}}</b>

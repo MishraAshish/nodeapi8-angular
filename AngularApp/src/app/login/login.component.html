@@ -1,6 +1,10 @@
 <p>login works!</p>
-<div class="logo">Create a new account!</div>
-    <div class="register-item">
+
+    <div *ngIf="userInfo.userName != undefined; else displayLogin ">You are already logged in as {{userInfo.userName}}!</div>
+    
+    <ng-template #displayLogin>
+    <div class="logo" >Create a new account!</div>
+    <div class="register-item" >
       <form #myform="ngForm" (ngSubmit)="register(myform)" class="form form-register">
 
         <div class="form-field">
@@ -26,3 +30,4 @@
         </div>
       </form>
     </div>
+</ng-template>

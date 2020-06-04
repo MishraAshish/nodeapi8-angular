@@ -9,8 +9,18 @@ import {UserService} from "../user.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
+  userInfo = {
+    userName:""
+  };
 
-  constructor(private userService : UserService, private router: Router) { }
+  constructor(private userService : UserService, private router: Router) { 
+    this.userService.currentUserInfo.subscribe((data)=>{
+      //debugger;
+      console.log("User Data ",data);
+      this.userInfo = data;
+  })
+  }
 
   ngOnInit(): void {
   }
@@ -21,6 +31,7 @@ export class LoginComponent implements OnInit {
     this.userService.signinUser(form.value).subscribe(
       (data: any[])=>{ //success : callback of observable object
         console.log(data);
+        this.userService.updateUserInfo(data);
         this.router.navigateByUrl("/product");
       },
       (error) => console.log(error), //error: callbak of observable object
