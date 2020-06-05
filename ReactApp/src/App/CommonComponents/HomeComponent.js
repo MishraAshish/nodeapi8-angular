@@ -86,7 +86,8 @@ export default class Home extends React.PureComponent{
     render(){
         console.log("Component LC Render - ", this.state.msg);
         return(//React.Fragment Returns one parent element without any additional div or parent
-            <div className={"loadimage"}>
+            <div className={"loadimage"} style={{backgroundImage: "url(./images/hm_pic4.jpg)"}}>
+                    {/* <img src={"./images/hm_pic4.jpg"} /> */}
                     {this.state.Title}
                     <br/>
                     <b className="feature">{"Below Feature's We've Implemented in our project :"}</b>
