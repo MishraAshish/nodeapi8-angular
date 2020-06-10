@@ -157,8 +157,8 @@ routes.get('/', (req, res)=>{
 routes.get('*', (req, res)=>{ //wild card operator
     res.locals.params = req.params;
     //res.json({"asd":'Hello World Default'}); 
-    res.send('Hello World Default'); 
-    res.sendFile(__dirname+"/package.json");
+    res.send('Hello World  '); 
+    //res.sendFile(__dirname+"/package.json");
 });
 
 

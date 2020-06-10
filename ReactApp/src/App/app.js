@@ -10,10 +10,10 @@ import NotFound from "./CommonComponents/NotFound";
 import {About} from "./CommonComponents/AboutComponent";
 import {AtmDispenser} from "./CommonComponents/ATMDispenser";
 import FunctionState from "./CommonComponents/ReactHooks";
-//import User from "./ApplicationComponents/Container/User/UserContainer";
-//import Cart from "./ApplicationComponents/Container/Cart/CartContainer";
-//import Product from "./ApplicationComponents/Container/Product/ProductContainer";
-//import DisplayProduct from "./ApplicationComponents/Container/Product/DisplayProductsContainer";
+import User from "./ApplicationComponents/Container/User/UserContainer";
+import Cart from "./ApplicationComponents/Container/Cart/CartContainer";
+import Product from "./ApplicationComponents/Container/Product/ProductContainer";
+import DisplayProduct from "./ApplicationComponents/Container/Product/DisplayProductsContainer";
 import Checkout from "./ApplicationComponents/Container/Checkout/CheckoutContainer";
 import Coupon from "./ApplicationComponents/Container/Coupon/CouponContainer";
 
@@ -28,25 +28,25 @@ function Loading() {
     )
 }
 
-const User = Loadable({
-    loader: () => import('./ApplicationComponents/Container/User/UserContainer'),
-    loading: Loading,
-});
+// const User = Loadable({
+//     loader: () => import('./ApplicationComponents/Container/User/UserContainer'),
+//     loading: Loading,
+// });
 
-const Cart = Loadable({
-    loader: () => import('./ApplicationComponents/Container/Cart/CartContainer'),
-    loading: Loading,
-});
+// const Cart = Loadable({
+//     loader: () => import('./ApplicationComponents/Container/Cart/CartContainer'),
+//     loading: Loading,
+// });
 
-const Product = Loadable({
-    loader: () => import('./ApplicationComponents/Container/Product/ProductContainer'),
-    loading: Loading,
-});
+// const Product = Loadable({
+//     loader: () => import('./ApplicationComponents/Container/Product/ProductContainer'),
+//     loading: Loading,
+// });
 
-const DisplayProduct = Loadable({
-    loader: () => import('./ApplicationComponents/Container/Product/DisplayProductsContainer'),
-    loading: Loading,
-});
+// const DisplayProduct = Loadable({
+//     loader: () => import('./ApplicationComponents/Container/Product/DisplayProductsContainer'),
+//     loading: Loading,
+// });
 
 //export default class App extends Component{
 export default class App extends React.Component{    

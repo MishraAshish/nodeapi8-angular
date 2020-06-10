@@ -1,25 +1,38 @@
-class Counter{
-    start(){
-        this.count = 0;
-        let scope = this;
-
-        setInterval(function () {
-            //console.log(this.count);
-            //this.count++;
-            scope.count++;
-            console.log(scope.count);
-            //console.log(this.count);
-        }, 500);
-
-        // setInterval(() => {
-        //     this.count++;
-        //     console.log(this.count);
-        // }, 500);
+function sum(x, y) {
+    if (y !== undefined) {
+      return x + y;
+    } else {
+      return function(y) { return x + y; };
     }
 }
 
-let cObj = new Counter();
-cObj.start();
+console.log(sum(2,3)); //
+
+console.log(sum(2)(3)); //
+
+
+// class Counter{
+//     start(){
+//         this.count = 0;
+//         let scope = this;
+
+//         setInterval(function () {
+//             //console.log(this.count);
+//             //this.count++;
+//             scope.count++;
+//             console.log(scope.count);
+//             //console.log(this.count);
+//         }, 500);
+
+//         // setInterval(() => {
+//         //     this.count++;
+//         //     console.log(this.count);
+//         // }, 500);
+//     }
+// }
+
+// let cObj = new Counter();
+// cObj.start();
 
 
 
