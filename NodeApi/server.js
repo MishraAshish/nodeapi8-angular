@@ -23,6 +23,7 @@ app.use("/WebApp",webProject);
 
 app.use("/",router);
 
+//webProject Path : http://localhost:9090/webapp/app
 webProject.get("/app", (req, res)=>{
     res.sendFile(__dirname+"/webProject/index.html")
 });
@@ -34,3 +35,5 @@ webProject.get("/app", (req, res)=>{
 app.listen(app.locals.port,"localhost",()=>{
     console.log("We are listening at port : 9090");
 })
+
+//www.alleen.com -> /webProject/index.html -->load bundle.js( actual react aplication)
