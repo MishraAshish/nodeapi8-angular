@@ -56,6 +56,7 @@ export default class User extends Component{
 
     LoginUser = ()=>{
         //alert("Login Facility is not available now");
+        debugger;
         console.log(this.state);
         this.props.loginUser(this.state);
     }

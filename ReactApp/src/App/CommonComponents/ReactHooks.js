@@ -1,5 +1,5 @@
-import React, {useState, useReducer} from "react";
-import {connect} from "react-redux";
+import React, {useState, useReducer, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {addUserToStore} from "../State/Actions";
 //https://serverless-stack.com/chapters/create-a-custom-react-hook-to-handle-form-fields.html
 //hooks in react to use state in functional component
@@ -15,11 +15,13 @@ const FunctionState = (props) => {
     //     })
     // }
     let initialState = { userName: 'Cool' };
-    let [defaultState, dispatch] = useReducer(props.addUser, initialState);
+    //let [defaultState, dispatch] = useReducer(props.addUser, initialState);
+    let user = useSelector((state) => state.user.user);
+    const dispatch = useDispatch();
 
     const [couponNumber, setCoupon] = useState(2020);
     
-    const [userName, setName] = useState({Name:"Ashish", Age:25});
+    const [userName, setName] = useState(user);
 
     const generateCoupon = () => {
         setCoupon(couponNumber + Math.ceil(Math.random()*10000))
@@ -30,26 +32,26 @@ const FunctionState = (props) => {
         debugger;
         //dispatch = useReducer(props.addUser, initialState);
         //dispatch(initialState);
-        let st = defaultState;
+        //let st = defaultState;
         
-        dispatch();
+        dispatch(addUserToStore(userName));
     }
 
     let changeName = () => {
-        setName({Name : userName.Name + " 25", Age: 75, City : "NY"});        
+        setName({userName : userName.userName + "Ashish 25", mobile: 75, street : "NY"});        
     }
-    console.log("userName " + props.user.userName);
+    console.log("userName ", user);
     
     return (
         <div>
-            <b>{props.user.userName}</b>
+            <b>{user.userName}</b>
             <hr/>
             <button onClick={generateCoupon}>
             Your generated coupon is {couponNumber}
         </button>
         <hr/>
         <button onClick={changeName}>
-            Your name is {userName.Name + "   " + userName.Age + "   " + userName.City}
+            Your name is {userName.userName + "   " + userName.mobile + "   " + userName.street}
         </button>
         <hr/>
         <button onClick={sendNameToReducer}>Send To Reducer
@@ -58,18 +60,4 @@ const FunctionState = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        user:state.user.user
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addUser:(user) => {
-            dispatch(addUserToStore(user));
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FunctionState);
+export default FunctionState;

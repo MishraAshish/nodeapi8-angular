@@ -10,7 +10,7 @@ router = require("./router");
 
 app.locals.port = 9090;
 
-app.use(cors()); //using cors: to allow cross origin requests basically to read and respond to different domains
+app.use(cors()); //using cors: to allow cross origin requests basically to read and respond to different domains//{credentials: true, origin: true}
 app.use(bodyParser.urlencoded({extended:false}));
 app.use('/static', express.static('webProject/app'));
 app.use('/images', express.static('webProject/images'));
